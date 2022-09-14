@@ -13,5 +13,15 @@ model Courses {
   description String?
   duration    Int
   created_at  DateTime @default(now())
+
   @@map("courses")
+}
+
+model Modules {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  created_at  DateTime @default(now())
+
+  @@map("modules")
 }
