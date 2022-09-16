@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function insert() {
+async function create() {
     const result = await prisma.courses.create({
         data: {
             name: 'NodeJS',
@@ -14,4 +14,4 @@ async function insert() {
     console.log(result);
 }
 
-insert();
+create();
