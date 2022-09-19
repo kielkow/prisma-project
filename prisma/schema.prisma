@@ -14,8 +14,10 @@ model Courses {
   duration    Int
   created_at  DateTime @default(now())
 
-  courseModules CourseModules[]
   @@map("courses")
+
+  CourseModules CourseModules[]
+  Teachers      Teachers[]
 }
 
 model Modules {
@@ -24,8 +26,12 @@ model Modules {
   description String?
   created_at  DateTime @default(now())
 
-  courseModules CourseModules[]
+  teacher   Teachers @relation(fields: [teacherId], references: [id])
+  teacherId String
+
   @@map("modules")
+
+  CourseModules CourseModules[]
 }
 
 model CourseModules {
@@ -41,4 +47,16 @@ model CourseModules {
   updatedAt  DateTime @default(now()) @updatedAt
 
   @@map("course_modules")
+}
+
+model Teachers {
+  id   String @id @default(uuid())
+  name String @unique
+
+  course   Courses? @relation(fields: [courseId], references: [id])
+  courseId String?
+
+  @@map("teachers")
+
+  Modules Modules[]
 }
