@@ -14,10 +14,10 @@ model Courses {
   duration    Int
   created_at  DateTime @default(now())
 
-  @@map("courses")
 
-  CourseModules CourseModules[]
-  Teachers      Teachers[]
+  courseModules CourseModules[]
+  teachers      Teachers[]
+  @@map("courses")
 }
 
 model Modules {
@@ -29,9 +29,9 @@ model Modules {
   teacher   Teachers @relation(fields: [teacherId], references: [id])
   teacherId String
 
-  @@map("modules")
 
-  CourseModules CourseModules[]
+  courseModules CourseModules[]
+  @@map("modules")
 }
 
 model CourseModules {
@@ -56,7 +56,7 @@ model Teachers {
   course   Courses? @relation(fields: [courseId], references: [id])
   courseId String?
 
-  @@map("teachers")
 
-  Modules Modules[]
+  modules Modules[]
+  @@map("teachers")
 }
