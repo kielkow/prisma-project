@@ -2,15 +2,15 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-async function createExistTeacher() {
+async function createNonExistTeacher() {
   const result = await prisma.courses.create({
     data: {
       name: "Curso de Java",
       duration: 500,
       description: "Curso de Java 17",
       teacher: {
-        connect: {
-          id: "",
+        create: {
+          name: "Jonh Doe",
         },
       },
     },
@@ -19,4 +19,4 @@ async function createExistTeacher() {
   console.log(result);
 }
 
-createExistTeacher();
+createNonExistTeacher();

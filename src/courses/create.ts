@@ -8,7 +8,7 @@ async function create() {
       name: "Curso de Java",
       duration: 500,
       description: "Curso de Java 17",
-      teachers: {
+      teacher: {
         connectOrCreate: {
           where: {
             name: "Jonh Doe",
