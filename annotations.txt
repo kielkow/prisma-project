@@ -1,0 +1,8 @@
+// IMPORT DB COMMAND
+[npx or yarn] prisma db pull
+
+// RUN MIGRATE
+[npx or yarn] prisma migrate dev
+
+// FORMAT SCHEMA
+[npx or yarn] prisma format
